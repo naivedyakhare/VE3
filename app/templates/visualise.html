@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Visualize Stock Prices</title>
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.5.2/css/bootstrap.min.css">
+</head>
+<body>
+    <h1>Stock Prices Visualization</h1>
+    {% if data_uri %}
+        <div>
+            <img src="{{ data_uri }}" alt="Stock Price Plot" class="img-fluid">
+        </div>
+        <h2>First Few Rows of Data</h2>
+        <div>
+            {{ first_rows|safe }}
+        </div>
+        <h2>Statistics</h2>
+        <div>
+            {{ stats_html|safe }}
+        </div>
+    {% elif message %}
+        <p>{{ message }}</p>
+    {% endif %}
+    <a href="{% url 'upload_file' %}">Upload New CSV</a>
+</body>
+</html>
